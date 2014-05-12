@@ -1,0 +1,43 @@
+This is a layout for the window manager `awesome'.  This layout arranges
+windows similar to the `tile' layout, the difference being that windows
+residing in the same column are overlapped instead of stacked.
+
+This layout has only been tested with awesome 3.4.
+
+
+How to install
+--------------
+
+First
+
+	cp overlap.lua "${XDG_CONFIG_HOME:-~/.config}"/awesome
+
+then add the following to the top of your `rc.lua'
+
+	local overlap = require "overlap"
+
+and add `overlap', `overlap.left', `overlap.bottom' and `overlap.top' to the
+`layouts' array.
+
+To make the layout icons visible
+
+	cp -R icons "${XDG_CONFIG_HOME:-~/.config}"/awesome
+
+and add the following to your `theme.lua'
+
+	theme.layout_overlap = awful.util.getdir("config") ..
+	                       "/icons/overlapw.png"
+	theme.layout_overlapleft = awful.util.getdir("config") ..
+	                           "/icons/overlapleftw.png"
+	theme.layout_overlapbottom = awful.util.getdir("config") ..
+	                             "/icons/overlapbottomw.png"
+	theme.layout_overlaptop = awful.util.getdir("config") ..
+	                          "/icons/overlaptopw.png"
+
+If you want black icons, remove the `w' from the icon filenames.
+
+
+Why can't I change the master width factor with my mouse?
+---------------------------------------------------------
+
+Please see <https://awesome.naquadah.org/bugs/?do=details&task_id=954>.
